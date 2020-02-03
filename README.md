@@ -1,2 +1,2 @@
-# wp
-white paper code 
+# White Paper Ideas
+
