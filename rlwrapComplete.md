@@ -21,14 +21,14 @@ You've set a varabile in the last q session then exited the q session and starte
 You could scroll back through all the history looking for the line that set it.
 But if you know how that line started you can start a new q line with a ! and start typing the start of the same line your looking for then hit tab to make it auto complete the line for you.
 
-# <CTRL-R>
+# CTRL-R
 
-## Problem 2
+## Problem
 You have a cmd that you executed previously that you want to re execute, or edit slight and execute. 
 You cant use the ! search as it only find the last instance that looked like this and you've run multiple commands that start this way.
 You need a more comprehesive search.
 
-## Solution 2 
+## Solution
 You can search through all your q history by first hitting CTRL-R then typing what you're searching for.
 
 ```
@@ -41,7 +41,7 @@ Once you've found the one you were looking for hit right arrow to edit before ex
 
 # rlwrap -f 
 
-## Problem 3
+## Problem
 Maybe you've just started learning KDB and you cant remember this big list of all the q functions.
 You have https://code.kx.com/q/ref/ bookmarked but are just feed up having to keep checking
 
