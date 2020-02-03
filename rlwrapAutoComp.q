@@ -1,6 +1,6 @@
 /
     Create auto complete file from given Q session to be used by rlwrap
-    Author: Eoin Cunning, Kx Systems
+    Author: E M Cunning, Kx Systems
 \
 
 // move into namespace Rlwrap Auto Complete
