@@ -1,15 +1,57 @@
-# The Problem 
+# Intro
+Rlwrap is a readline wrapper, a small utility that uses the GNU readline library to allow the editing of keyboard input for any other command. Essentailly rlwap is used to allow users the ability to use the arrow keys to move left to write to edit and up and down to cycle through historical commands.
 
+If you arent already using rlwrap already here's how to install it. 
+
+mac:    https://code.kx.com/q/learn/install/macos/#install-rlwrap
+linux:  https://code.kx.com/q/learn/install/linux/#install-rlwrap
+
+Note rlwrap is only available for linux and mac os and not on windows.
+
+Usually developers install rlwrap. Update their q alias and be happy that they no longer have to type entire lines of code left to right in an language read right to left without being able to use the arrow keys.
+
+But theres actually some useful features of rlwrap that most developers don't seem to be aware of and thats what this post hopes to share.
+
+# ! ... 
+
+## Problem
+You've set a varabile in the last q session then exited the q session and started another one. Now you want to reset the same variable.
+
+## Solution 
+You could scroll back through all the history looking for the line that set it.
+But if you know how that line started you can start a new q line with a ! and start typing the start of the same line your looking for then hit tab to make it auto complete the line for you.
+
+# <CTRL-R>
+
+## Problem 2
+You have a cmd that you executed previously that you want to re execute, or edit slight and execute. 
+You cant use the ! search as it only find the last instance that looked like this and you've run multiple commands that start this way.
+You need a more comprehesive search.
+
+## Solution 2 
+You can search through all your q history by first hitting CTRL-R then typing what you're searching for.
+
+```
+q)cmdIRan:1+1
+q)
+(reverse-i-search)`cmdIRanE': cmdIRanEarlier:1+2
+```
+The lastest match will then appear, You an use up to look at older lines that also match.
+Once you've found the one you were looking for hit right arrow to edit before executing. Or enter to excute same line again.
+
+# rlwrap -f 
+
+## Problem 3
 Maybe you've just started learning KDB and you cant remember this big list of all the q functions.
 You have https://code.kx.com/q/ref/ bookmarked but are just feed up having to keep checking
 
 ... or maybe you're an experience developer thats just started everywhere and really cant be bother trying to remember all the new function names in the framework you are now going to be using
 
-... or like me you just really struggle spelling ~~recipricol~~ ~~reciprical~~ ... "(%:)" . Seriously 10 letters for a Q function? 
+... or like me you just really struggle spelling ~~recipricol~~ ~~reciprical~~ ... "(%:)" . Seriously 10 letters for a Q function?
 
-# The solution
+## Solution
 
-Theres actually a really cool feature of rlwrap that can help with this. The -f, --file option:
+The -f, --file option:
 ```
   -f, --file file
          Split file into words and add them to the completion word list. This option can be given more than once, and adds to the default completion list in  $RLWRAP_HOME or /usr/share/rlwrap/completions.
