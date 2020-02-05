@@ -23,7 +23,7 @@ You've set a varabile in the last q session then exited the q session and starte
 You could scroll back through all the history looking for the line that set it.
 But if you know how that line started you can start a new q line with a ! and start typing the start of the same line your looking for then hit tab to make it auto complete the line for you.
 
-## CTRL-R
+## CTRL-r
 
 ### Problem
 You have a cmd that you executed previously that you want to re execute, or edit slight and execute. 
@@ -31,7 +31,7 @@ You cant use the ! search as it only find the last instance that looked like thi
 You need a more comprehesive search.
 
 ### Solution
-You can search through all your q history by first hitting CTRL-R then typing what you're searching for.
+You can search through all your q history by first hitting CTRL-r then typing what you're searching for.
 
 ```
 q)cmdIRan:1+1
@@ -40,6 +40,14 @@ q)
 ```
 The lastest match will then appear, You an use up to look at older lines that also match.
 Once you've found the one you were looking for hit right arrow to edit before executing. Or enter to excute same line again.
+
+# CTRL-l
+
+## Problem
+Your showing somebody something on q and you have a mess of code on your screen, or maybe your while sharing your screen you cant really see the bottom of the screen properly or just want to start from blank to make things clear.
+
+## Solution
+CTRL-l works as a short cut for 'clear' command. No one may ever need to know about that embarassing 'type error...
 
 ## rlwrap -f 
 
