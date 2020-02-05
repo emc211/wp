@@ -1,4 +1,4 @@
-# Intro
+# Getting the most out of rlwrap
 All the best devlopers are lazy. But a unique kind of lazy. The kind of lazy that spends 3 hours learning how to most optimially compelete a 5 minute task just incase you ever have to repeat said task. I thought id share with you on what i found on one such lazy rabbit hole.
 
 Rlwrap is a readline wrapper, a small utility that uses the GNU readline library to allow the editing of keyboard input for any other command. Essentailly rlwap is used to allow users the ability to use the arrow keys to move left to write to edit and up and down to cycle through historical commands.
@@ -14,23 +14,23 @@ Usually developers install rlwrap. Update their q alias and be happy that they n
 
 But theres actually some useful features of rlwrap that most developers don't seem to be aware of and thats what this post hopes to share.
 
-# ! ... 
+## ! ... 
 
-## Problem
+### Problem
 You've set a varabile in the last q session then exited the q session and started another one. Now you want to reset the same variable.
 
-## Solution 
+### Solution 
 You could scroll back through all the history looking for the line that set it.
 But if you know how that line started you can start a new q line with a ! and start typing the start of the same line your looking for then hit tab to make it auto complete the line for you.
 
-# CTRL-R
+## CTRL-R
 
-## Problem
+### Problem
 You have a cmd that you executed previously that you want to re execute, or edit slight and execute. 
 You cant use the ! search as it only find the last instance that looked like this and you've run multiple commands that start this way.
 You need a more comprehesive search.
 
-## Solution
+### Solution
 You can search through all your q history by first hitting CTRL-R then typing what you're searching for.
 
 ```
@@ -41,9 +41,9 @@ q)
 The lastest match will then appear, You an use up to look at older lines that also match.
 Once you've found the one you were looking for hit right arrow to edit before executing. Or enter to excute same line again.
 
-# rlwrap -f 
+## rlwrap -f 
 
-## Problem
+### Problem
 Maybe you've just started learning KDB and you cant remember this big list of all the q functions.
 You have https://code.kx.com/q/ref/ bookmarked but are just feed up having to keep checking
 
@@ -51,7 +51,7 @@ You have https://code.kx.com/q/ref/ bookmarked but are just feed up having to ke
 
 ... or like me you just really struggle spelling ~~recipricol~~ ~~reciprical~~ ... "(%:)" . Seriously 10 letters for a Q function?
 
-## Solution
+### Solution
 
 The -f, --file option:
 ```
