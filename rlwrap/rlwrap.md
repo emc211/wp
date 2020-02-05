@@ -143,3 +143,5 @@ q)reciprocal
 ```
 
 You'll never have to spell reciprocal again.
+
+![Test Gif](tty.gif)
