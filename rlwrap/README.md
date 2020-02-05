@@ -41,12 +41,12 @@ q)
 The lastest match will then appear, You an use up to look at older lines that also match.
 Once you've found the one you were looking for hit right arrow to edit before executing. Or enter to excute same line again.
 
-# CTRL-l
+## CTRL-l
 
-## Problem
+### Problem
 Your showing somebody something on q and you have a mess of code on your screen, or maybe your while sharing your screen you cant really see the bottom of the screen properly or just want to start from blank to make things clear.
 
-## Solution
+### Solution
 CTRL-l works as a short cut for 'clear' command. No one may ever need to know about that embarassing 'type error...
 
 ## rlwrap -f 
