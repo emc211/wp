@@ -70,42 +70,41 @@ The -f, --file option:
 This will allow us to start typing a function and then tab to auto-complete/show us all the options we have.
 Much like when you press tab in unix when writing out file paths.
 
-Now we just need a way to populate this file. The tools in order to do this have been included in a script to accompony this blog.
+Now we just need a way to populate this file...
+```
+buildRlwrapCompFile:{[filePath]
+    exceptlist:(),`; //always ignore null
+/   exceptlist,:`.Q``.h`.j`.o`.cf; //edit this line to customise what namespaces to exclude
+    f:{distinct x,raze ` sv/:/:a[c],/:'b@:c:where 11h=type each b:key each a@:where 99=type each @[value;;`] each a:x except y}[;exceptlist]/;
+    //q functions and
+    list:`$raze {1_(1+count string x)_/:string y enlist x}[;f]each `.q,system"d"; // uncomment for auto complete standard q funcs
+    list:list except `;
+    //
+    exceptlist,:`.q;
+    //name spaces from root
+    nss:` sv/:`,/:key `; //namespaces
+    nss:nss except exceptlist;
+    //starting,:`; //uncomment to include global variables
+    list,:f nss;
+    //get rid of the starting namespaces
+    list:list except nss;
+    filePath 0: string list;
+    }
+```
 
 Start your q session load in all the functions you want to be included in your auto complete list. 
 
-Then load in function above and run
+Then load in function above and run 
 ```
-.rac.buildRlwrapCompFile ` sv (hsym `$system"echo $HOME"),`qRlwapAutoComplete.txt
+buildRlwrapCompFile ` sv (hsym `$system"echo $HOME"),`qRlwapAutoComplete.txt
 ```
-
-```
-|20:37:38|eoincunning@Eoins-Air:[rlwrap]> q
-KDB+ 3.6 2018.12.24 Copyright (C) 1993-2018 Kx Systems
-m32/ 4()core 4096MB eoincunning eoins-air.home 192.168.1.10 NONEXPIRE  
-
-q)//load some libaries you want to include in list
-q)\l /Users/eoincunning/kdb/utils/dbmaint.q 
-q)
-q)/load rlwarp auto complete script 
-q)\l rlwrapAutoComp.q
-q)
-q).rac.writeRlwrapFile ` sv (hsym `$system"echo $HOME"),`qRlwapAutoComplete.txt  
-q)\\
-https://medium.com/@pczarkowski/how-to-make-an-animated-gif-of-your-terminal-commands-62b08dfb6089
-```
-![Demonstration of running build script](buildFile.gif)
 
 Now start a new q session with (edit or add alias to your .bashrc)
-
-
 ```
 rlwrap -f ~/qRlwapAutoComplete.txt q
 ```
 
-Now when you hit tab twice <tab> <tab> you will see all the options in ~/qRlwapAutoComplete.txt 
-![Demonstration of rlwrap -f ](fileDemo.gif)
-
+Now hit tab twice <tab> <tab>... 
 ```
 q)
 Display all 376 possibilities? (y or n)
@@ -153,3 +152,4 @@ q)reciprocal
 
 You'll never have to spell reciprocal again.
 
+![Test Gif](tty.gif)

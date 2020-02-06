@@ -38,7 +38,7 @@ recSearch:{distinct x,raze @[;where x[b] in `.q,system"d";{raze 2 _/:` vs/:x}] `
 //
 buildList:{
     //if x is ` or (::) overwrite will all namespaces other wise just ensure is list
-    x:$[1b~null x;` sv/:`,/:key `;x,()];
+    x:$[1b~null x;`.,` sv/:`,/:key `;x,()];
     //recursives search ignoring exclusion list
     res:recSearch x except ign;
     //drop special namespaces and start of others and sort
