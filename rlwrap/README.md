@@ -1,5 +1,5 @@
-# Getting the most out of rlwrap
-All the best devlopers are lazy. But a unique kind of lazy. The kind of lazy that spends 3 hours learning how to most optimially compelete a 5 minute task just incase you ever have to repeat said task. I thought id share with you on what i found on one such lazy rabbit hole.
+# Unwrapping rlwrap
+All the best devlopers are lazy. But a unique kind of lazy. The kind of lazy that spends 3 hours learning how to most optimially compelete a 5 minute task just incase you ever have to repeat said task. I thought id share with you on what i found on one such lazy rabbit hole that will help you get the most out of rlwrap with Q.
 
 Rlwrap is a readline wrapper, a small utility that uses the GNU readline library to allow the editing of keyboard input for any other command. Essentailly rlwap is used to allow users the ability to use the arrow keys to move left to write to edit and up and down to cycle through historical commands.
 
