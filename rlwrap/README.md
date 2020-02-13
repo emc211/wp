@@ -19,9 +19,7 @@ But theres actually some useful features of rlwrap that most developers don't se
 ## CTRL-r
 
 ### Problem
-You have a cmd that you executed previously that you want to re execute, or edit slightly and execute. 
-You cant use the ! search as it only find the last instance that looked like this and you've run multiple commands that start this way.
-You need a more comprehesive search.
+You have a cmd that you executed previously that you want to re execute or edit slightly and execute without having to re typing the whole thing. Or endlessly hitting up until you find it. 
 
 ### Solution
 You can search through all your q history by first hitting CTRL-r then typing what you're searching for.
