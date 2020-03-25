@@ -72,21 +72,6 @@ Then load in function above and run
 .rac.buildRlwrapCompFile ` sv (hsym `$system"echo $HOME"),`qRlwapAutoComplete.txt
 ```
 
-```
-|20:37:38|eoincunning@Eoins-Air:[rlwrap]> q
-KDB+ 3.6 2018.12.24 Copyright (C) 1993-2018 Kx Systems
-m32/ 4()core 4096MB eoincunning eoins-air.home 192.168.1.10 NONEXPIRE  
-
-q)//load some libaries you want to include in list
-q)\l /Users/eoincunning/kdb/utils/dbmaint.q 
-q)
-q)/load rlwarp auto complete script 
-q)\l rlwrapAutoComp.q
-q)
-q).rac.writeRlwrapFile ` sv (hsym `$system"echo $HOME"),`qRlwapAutoComplete.txt  
-q)\\
-https://medium.com/@pczarkowski/how-to-make-an-animated-gif-of-your-terminal-commands-62b08dfb6089
-```
 ![Demonstration of running build script](buildFile.gif)
 
 Now start a new q session with (edit or add alias to your .bashrc)
