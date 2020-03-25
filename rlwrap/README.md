@@ -27,7 +27,6 @@ Similarly to how you can search through your history in a bash shell. You can se
 
 The latest match will then appear, You can use the up arrow to look at older lines that also match. Once you've found the one you were looking for hit the right or left arrow to edit before executing. Or enter to execute same line again.
 
-
 ![Demonstration of ctrl-r](ctrlr.gif)
 
 ## CTRL-l
@@ -82,6 +81,7 @@ rlwrap -f ~/qRlwapAutoComplete.txt q
 ```
 
 Now when you hit 'tab' twice you will see all the options in ~/qRlwapAutoComplete.txt 
+
 ![Demonstration of rlwrap -f ](demoFile.gif)
 
 You'll never have to spell reciprocal again.
