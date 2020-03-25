@@ -54,7 +54,8 @@ The -f, --file option:
 ```
   -f, --file file
          Split file into words and add them to the completion word list. 
-         This option can be given more than once, and adds to the default completion list in  $RLWRAP_HOME or /usr/share/rlwrap/completions.
+         This option can be given more than once, and adds to the default completion list in 
+         $RLWRAP_HOME or /usr/share/rlwrap/completions.
 
 ```
 
