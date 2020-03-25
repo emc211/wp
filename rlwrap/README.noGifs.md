@@ -1,50 +1,48 @@
-# Getting the most out of rlwrap
-All the best devlopers are lazy. But a unique kind of lazy. The kind of lazy that spends 3 hours learning how to most optimially compelete a 5 minute task just incase you ever have to repeat said task. I thought id share with you on what i found on one such lazy rabbit hole.
+# Unwrapping rlwrap
+Sometimes developers have a choice, spend five minutes completing a menial task or spend three hours learning how to most optimally complete it....
 
-Rlwrap is a readline wrapper, a small utility that uses the GNU readline library to allow the editing of keyboard input for any other command. Essentailly rlwap is used to allow users the ability to use the arrow keys to move left to write to edit and up and down to cycle through historical commands.
+A lot longer than three hours later and below is all I have to show for it, but hopefully it will help you get the most out of rlwrap with q.
 
-If you arent already using rlwrap already here's how to install it. 
+Out of the box a kdb+ console does not support using arrow keys to edit the line of code you are writing or go back through the history of commands you have entered. Rlwrap is a small utility which enables these features.
 
-mac:    https://code.kx.com/q/learn/install/macos/#install-rlwrap
-linux:  https://code.kx.com/q/learn/install/linux/#install-rlwrap
+If you aren’t already using rlwrap already here's how to install it.
+
+mac: https://code.kx.com/q/learn/install/macos/#install-rlwrap 
+
+linux: https://code.kx.com/q/learn/install/linux/#install-rlwrap 
 
 Note rlwrap is only available for linux and mac os and not on windows.
 
 Usually developers install rlwrap. Update their q alias and be happy that they no longer have to type entire lines of code left to right in an language read right to left without being able to use the arrow keys.
 
-But theres actually some useful features of rlwrap that most developers don't seem to be aware of and thats what this post hopes to share.
-
-## ! ... 
-
-### Problem
-You've set a varabile in the last q session then exited the q session and started another one. Now you want to reset the same variable.
-
-### Solution 
-You could scroll back through all the history looking for the line that set it.
-But if you know how that line started you can start a new q line with a ! and start typing the start of the same line your looking for then hit tab to make it auto complete the line for you.
+But there's actually some useful features of rlwrap that most developers don't seem to be aware of and that's what this post hopes to share.
 
 ## CTRL-r
 
 ### Problem
-You have a cmd that you executed previously that you want to re execute, or edit slight and execute. 
-You cant use the ! search as it only find the last instance that looked like this and you've run multiple commands that start this way.
-You need a more comprehesive search.
+You have a cmd that you executed previously that you want to re-execute or edit slightly and execute without having to retype the whole thing. Or endlessly hitting the up arrow until you find it.
 
 ### Solution
-You can search through all your q history by first hitting CTRL-r then typing what you're searching for.
+Similarly to how you can search through your history in a bash shell. You can search through all your q history by first hitting CTRL-r then typing what you're searching for.
+
+The latest match will then appear, You can use the up arrow to look at older lines that also match. Once you've found the one you were looking for hit the right or left arrow to edit before executing. Or enter to execute same line again.
 
 ```
-q)cmdIRan:1+1
 q)
-(reverse-i-search)`cmdIRanE': cmdIRanEarlier:1+2
+q)commandIRan:1+1
+q)moreCommands:1
+q)1+1
+2
+q)2+2
+4
+q)
+(reverse-i-search)`cmdIRan': cmdIRanEarlier:1+2
 ```
-The lastest match will then appear, You an use up to look at older lines that also match.
-Once you've found the one you were looking for hit right arrow to edit before executing. Or enter to excute same line again.
 
 ## CTRL-l
 
 ### Problem
-Your showing somebody something on q and you have a mess of code on your screen, or maybe your while sharing your screen you cant really see the bottom of the screen properly or just want to start from blank to make things clear.
+You're showing somebody something in q and you have a mess of code on your screen, or maybe while sharing your screen you can’t really see the bottom of the screen properly or just want to start from blank to make things clear.
 
 ### Solution
 CTRL-l works as a short cut for 'clear' command. No one may ever need to know about that embarassing 'type error...
@@ -52,59 +50,55 @@ CTRL-l works as a short cut for 'clear' command. No one may ever need to know ab
 ## rlwrap -f 
 
 ### Problem
-Maybe you've just started learning KDB and you cant remember this big list of all the q functions.
-You have https://code.kx.com/q/ref/ bookmarked but are just feed up having to keep checking
+Maybe you've just started learning kdb+ and you can’t remember this big list of all the q functions. You have https://code.kx.com/q/ref/ bookmarked but are just fed up having to keep checking
 
-... or maybe you're an experience developer thats just started everywhere and really cant be bother trying to remember all the new function names in the framework you are now going to be using
+... or maybe you're an experienced developer that’s just started a new role and really can’t be bothered trying to remember all the new function names in the framework you are now going to be using
 
-... or like me you just really struggle spelling ~~recipricol~~ ~~reciprical~~ ... "(%:)" . Seriously 10 letters for a Q function?
+... or like me you just really struggle spelling recipricol reciprical ... "(%:)" . Seriously 10 letters for a q function?
 
 ### Solution
 
 The -f, --file option:
 ```
   -f, --file file
-         Split file into words and add them to the completion word list. This option can be given more than once, and adds to the default completion list in  $RLWRAP_HOME or /usr/share/rlwrap/completions.
+         Split file into words and add them to the completion word list. 
+         This option can be given more than once, and adds to the default completion list in 
+         $RLWRAP_HOME or /usr/share/rlwrap/completions.
+
 ```
 
-This will allow us to start typing a function and then tab to auto-complete/show us all the options we have.
-Much like when you press tab in unix when writing out file paths.
+This will allow us to start typing a function and then hit ‘tab’ to auto-complete/show us all the options we have. Much like when you press tab in unix when writing out file paths.
 
-Now we just need a way to populate this file...
+Now we just need a way to populate this file. The tools in order to do this have been included in a script to accompany this blog.
+
+Start your q session load in all the functions you want to be included in your auto complete list.
+
+Then load in function above and run
+
 ```
-buildRlwrapCompFile:{[filePath]
-    exceptlist:(),`; //always ignore null
-/   exceptlist,:`.Q``.h`.j`.o`.cf; //edit this line to customise what namespaces to exclude
-    f:{distinct x,raze ` sv/:/:a[c],/:'b@:c:where 11h=type each b:key each a@:where 99=type each @[value;;`] each a:x except y}[;exceptlist]/;
-    //q functions and
-    list:`$raze {1_(1+count string x)_/:string y enlist x}[;f]each `.q,system"d"; // uncomment for auto complete standard q funcs
-    list:list except `;
-    //
-    exceptlist,:`.q;
-    //name spaces from root
-    nss:` sv/:`,/:key `; //namespaces
-    nss:nss except exceptlist;
-    //starting,:`; //uncomment to include global variables
-    list,:f nss;
-    //get rid of the starting namespaces
-    list:list except nss;
-    filePath 0: string list;
-    }
+.rac.buildRlwrapCompFile ` sv (hsym `$getenv `HOME),`qRlwapAutoComplete.txt
 ```
 
-Start your q session load in all the functions you want to be included in your auto complete list. 
-
-Then load in function above and run 
 ```
-buildRlwrapCompFile ` sv (hsym `$system"echo $HOME"),`qRlwapAutoComplete.txt
+q)
+q)//load some libaries you want to include in list
+q)\l /Users/eoincunning/kdb/utils/dbmaint.q
+q)
+q)/load rlwrap autocomplete script
+q)\l rlwrapAutoComp.q
+q)
+q)//run function to write file with desired file location as input
+q).rac.writeRlwrapFile ` sv (hsym `$getenv `HOME),`qRlwrapAutoComplete.txt
 ```
 
 Now start a new q session with (edit or add alias to your .bashrc)
+
+
 ```
 rlwrap -f ~/qRlwapAutoComplete.txt q
 ```
 
-Now hit tab twice <tab> <tab>... 
+Now when you hit 'tab' twice you will see all the options in ~/qRlwapAutoComplete.txt 
 ```
 q)
 Display all 376 possibilities? (y or n)
@@ -149,7 +143,4 @@ read0       read1       reciprocal  reval       reverse
 q)reciprocal
 %:
 ```
-
 You'll never have to spell reciprocal again.
-
-![Test Gif](tty.gif)
