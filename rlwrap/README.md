@@ -8,6 +8,7 @@ Out of the box a kdb+ console does not support using arrow keys to edit the line
 If you aren’t already using rlwrap already here's how to install it.
 
 mac: https://code.kx.com/q/learn/install/macos/#install-rlwrap 
+
 linux: https://code.kx.com/q/learn/install/linux/#install-rlwrap 
 
 Note rlwrap is only available for linux and mac os and not on windows.
