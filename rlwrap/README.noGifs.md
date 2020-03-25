@@ -29,14 +29,14 @@ The latest match will then appear, You can use the up arrow to look at older lin
 
 ```
 q)
-q)commandIRan:1+1
-q)moreCommands:1
+q)command_1:1+1
+q)command_2:{1+x}
 q)1+1
 2
 q)2+2
 4
-q)//type CTRL-r and start typing desired previously ran command
-(reverse-i-search)`cmdIRan': cmdIRanEarlier:1+2
+q)//type CTRL-r and start typing desired previously executed command
+(reverse-i-search)`comm': command_2:{1+x}
 ```
 
 ## CTRL-l
