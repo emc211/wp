@@ -35,7 +35,7 @@ q)1+1
 2
 q)2+2
 4
-q)
+q)//type CTRL-r and start typing desired previously ran command
 (reverse-i-search)`cmdIRan': cmdIRanEarlier:1+2
 ```
 
