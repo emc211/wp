@@ -13,7 +13,7 @@ linux: https://code.kx.com/q/learn/install/linux/#install-rlwrap
 
 Note rlwrap is only available for linux and mac os and not on windows.
 
-Usually developers install rlwrap. Update their q alias and be happy that they no longer have to type entire lines of code left to right in an language read right to left without being able to use the arrow keys.
+Usually developers install rlwrap. Update their q alias and be happy that they no longer have to type entire lines of code left to right in a language read right to left without being able to use the arrow keys.
 
 But there's actually some useful features of rlwrap that most developers don't seem to be aware of and that's what this post hopes to share.
 
