@@ -63,10 +63,11 @@ Now you just need a way to populate this file. The tools in order to do this are
 
 Start your q session load in all the functions you want to be included in your auto complete list.
 
-Then load in function above and run
+Then load in provided script and run the following:
 
 ```
-.rac.buildRlwrapCompFile ` sv (hsym `$system"echo $HOME"),`qRlwapAutoComplete.txt
+q)\l rlwrapAutoComp.q
+q).rac.buildRlwrapCompFile ` sv (hsym `$system"echo $HOME"),`qRlwapAutoComplete.txt
 ```
 
 ![Demonstration of running build script](buildFile.gif)
