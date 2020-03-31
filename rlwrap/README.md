@@ -59,7 +59,7 @@ The -f, --file option, From man rlwrap:
 
 This will allow you to start typing a function and then hit ‘tab’ to auto-complete/show you all the options you have. Much like when you press tab in unix when writing out file paths.
 
-Now you just need a way to populate this file. The tools in order to do this are here [Link to script](rlwrapAutoComp.q) 
+Now you just need a way to populate this file. The tools in order to do this are in this [script](rlwrapAutoComp.q) 
 
 Start your q session load in all the functions you want to be included in your auto complete list.
 
