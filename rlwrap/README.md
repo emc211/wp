@@ -1,7 +1,5 @@
 # Unwrapping rlwrap
-Sometimes developers have a choice, spend five minutes completing a menial task or spend three hours learning how to most optimally complete it....
-
-A lot longer than three hours later and below is all I have to show for it, but hopefully it will help you get the most out of rlwrap with q.
+Sometimes developers have a choice; spend five minutes completing a menial task or a spend little longer streamlining it for future convenience. To that end, what I outline below will hopefully enable you to get the most out of rlwrap with q.
 
 Out of the box a kdb+ console does not support using arrow keys to edit the line of code you are writing or go back through the history of commands you have entered. Rlwrap is a small utility which enables these features.
 
@@ -32,10 +30,10 @@ The latest match will then appear, You can use the up arrow to look at older lin
 ## CTRL-l
 
 ### Problem
-You're showing somebody something in q and you have a mess of code on your screen, or maybe while sharing your screen you can’t really see the bottom of the screen properly or just want to start from blank to make things clear.
+You're showing somebody something in q and you have lots of code on your screen, or maybe while sharing your screen you can’t really see the bottom of the screen properly or just want to start from blank to make things clear.
 
 ### Solution
-CTRL-l works as a short cut for 'clear' command. No one may ever need to know about that embarassing 'type error...
+CTRL-l works as a short cut for 'clear' command. No one may ever need to know about that embarassing 'type error.
 
 ![Demonstration of ctrl-r](ctrll.gif)
 
@@ -50,7 +48,7 @@ Maybe you've just started learning kdb+ and you can’t remember this big list o
 
 ### Solution
 
-The -f, --file option:
+The -f, --file option, From man rlwrap:
 ```
   -f, --file file
          Split file into words and add them to the completion word list. 
@@ -59,9 +57,9 @@ The -f, --file option:
 
 ```
 
-This will allow us to start typing a function and then hit ‘tab’ to auto-complete/show us all the options we have. Much like when you press tab in unix when writing out file paths.
+This will allow you to start typing a function and then hit ‘tab’ to auto-complete/show you all the options you have. Much like when you press tab in unix when writing out file paths.
 
-Now we just need a way to populate this file. The tools in order to do this have been included in a script to accompany this blog.
+Now you just need a way to populate this file. The tools in order to do this are here [Link to script](rlwrapAutoComp.q) 
 
 Start your q session load in all the functions you want to be included in your auto complete list.
 
@@ -73,8 +71,7 @@ Then load in function above and run
 
 ![Demonstration of running build script](buildFile.gif)
 
-Now start a new q session with (edit or add alias to your .bashrc)
-
+Now start a new q session with rlwrap using the -f option and reference the file you just created:
 
 ```
 rlwrap -f ~/qRlwapAutoComplete.txt q
