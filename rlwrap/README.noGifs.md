@@ -76,7 +76,7 @@ Start your q session load in all the functions you want to be included in your a
 Then load in function above and run
 
 ```
-.rac.buildRlwrapCompFile ` sv (hsym `$getenv `HOME),`qRlwapAutoComplete.txt
+.rac.writeRlwrapFile ` sv (hsym `$getenv `HOME),`qRlwrapAutoComplete.txt
 ```
 
 ```
