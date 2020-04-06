@@ -67,7 +67,7 @@ Then load in provided script and run the following:
 
 ```
 q)\l rlwrapAutoComp.q
-q).rac.buildRlwrapCompFile ` sv (hsym `$system"echo $HOME"),`qRlwapAutoComplete.txt
+q).rac.writeRlwrapFile ` sv (hsym `$getenv `HOME),`qRlwrapAutoComplete.txt
 ```
 
 ![Demonstration of running build script](buildFile.gif)
