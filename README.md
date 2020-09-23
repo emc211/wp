@@ -7,4 +7,6 @@ highAvailHdb  CODED
 qQueues       IDEA
 
 overrides     IDEA
+
+tmux/screen stack     IDEA
 ```
