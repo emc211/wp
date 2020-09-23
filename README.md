@@ -1,3 +1,6 @@
 # White Paper Ideas
 
-test
+rlwrap        COMPLETE  thttps://kx.com/blog/unwrapping-rlwrap/
+highAvailHdb  CODED 
+qQueues       IDEA
+overrides     IDEA
