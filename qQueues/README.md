@@ -1,4 +1,5 @@
-#Queues in q
+## Queues in q
+
 Queues are everywhere. There in shops, supermarkets, the DMV and queues are even present in many kdb systems.
 In most kdb systems they're not called queues they're called gateways or balancers. But that name isnt anywhere near as clever for a blog post.
 This post will explorer the different ideas behind queues rather than how to design the process that exectue them themselves.
