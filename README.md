@@ -16,4 +16,6 @@ enumeration contention enumeration process?
 
 ordinals/cardinals,
 
+symlinked hdb - symlink to fast disk partitions if available otherwise slower nfs 
+
 ```
