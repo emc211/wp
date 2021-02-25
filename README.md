@@ -11,3 +11,4 @@
 - symlinked hdb - symlink to fast disk partitions if available otherwise slower nfs 
 - [alphaavantage](https://www.alphavantage.co/) interface with kdb
 - [iex](https://iexcloud.io/) interface with kdb 
+- .util.xasc to sort faster on disk
