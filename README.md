@@ -12,3 +12,4 @@
 - [alphaavantage](https://www.alphavantage.co/) interface with kdb
 - [iex](https://iexcloud.io/) interface with kdb 
 - .util.xasc to sort faster on disk
+- lock files to stop a hdb being queried/edited while another process is doing that
