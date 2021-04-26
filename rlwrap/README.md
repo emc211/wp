@@ -75,7 +75,7 @@ q).rac.writeRlwrapFile ` sv (hsym `$getenv `HOME),`qRlwrapAutoComplete.txt
 Now start a new q session with rlwrap using the -f option and reference the file you just created:
 
 ```
-rlwrap -f ~/qRlwapAutoComplete.txt q
+rlwrap -f ~/qRlwrapAutoComplete.txt q
 ```
 
 Now when you hit 'tab' twice you will see all the options in ~/qRlwapAutoComplete.txt 
