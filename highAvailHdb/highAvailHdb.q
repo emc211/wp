@@ -13,12 +13,18 @@ if[not `info in key `.log;
     .log.error:.log.info:-1
     ]
     
+.util.runSysCmdWithErrCheck:{[throwExceptionOnError;cmd]
+    cmd:raze cmd;
+    .log.info raze "Running system command ",cmd;
+    :@[system;cmd;{.log.error "Could not run system command - error was ",y;if[x;'y];y}[throwExceptionOnError;]];
+    };
+
 // @ desc  Runs a system command with logging
 // @ param cmd string command to be run
-.util.runSysCmd:{[cmd]
-    .log.info "Running system command ",cmd;
-    @[system;cmd;{'"Error attempting to run system command:",x}];
-    };
+.util.runSysCmd:.util.runSysCmdWithErrCheck[1b;]
+
+// @ desc  Attempts system command but if fails just returns the error doesnt throw into debug
+.util.runSysCmdIgnoreError:.util.runSysCmdWithErrCheck[0b;]
 
 // @ desc  wrapper command that will add ssh and user to command to run it on remote server if nessecary. Elimate seperate code to run same commands on local and remote
 // @ param remoteServer symbol name of server to run cmd on 
