@@ -1,36 +1,38 @@
-.util.xasc:{[colsToSortBy;handleToTable;opts]
-    //perform iasc on table from of what we want to sort by
-    order:iasc ?[handleToTable;();0b;{x!x}(),colsToSortBy];
-    if[order~til count order;
-        .log.info"already sorted:",string handleToTable;
-        if[count opts`compressionSet;
-            {.log.info"compressing :",string y;-19!y,y,x}[opts`compressionSet;] peach ` sv/:handleToTable,/:cols handleToTable;
+.util.xasc:{[sortCols;tblPath;opts]
+    //opts
+    compSet:opts`compSet;
+    //perform iasc on table form of what we want to sort by
+    order:iasc ?[tblPath;();0b;{x!x}(),sortCols];
+    //if can succsesfully apply sorted attribute to order its already sorted
+    if[@[{`s#x;1b};order;0b];
+        .log.info"already sorted:",string tblPath;
+        if[count compSet;
+            {.log.info"compressing :",string y;-19!y,y,x}[compSet;] peach ` sv/:tblPath,/:cols tblPath;
         ];
         :();
     ];
-    .util.applyNewOrderOnDisk[handleToTable;;order;opts`compressionSet]peach cols handleToTable
+    .util.applyNewOrderOnDisk[handleToTable;;order;compSet]peach cols handleToTable
     }
 
-.util.applyNewOrderOnDisk:{[handleToTable;column;order;compSet]
-    handle:(` sv handleToTable,column);
+.util.applyNewOrderOnDisk:{[handleToTable;column;order;compSet;attrCols]
+    handle:` sv handleToTable,column;
     st:.z.p;
-    /get data and apply sort
+    //get data and apply sort
     data:handleToTable[column] order;
+    if[column in key attrCols;
+        @[attrCols[column]#;data;{.log.error "failed to apply attribute to ",x," error: ",y}[column;]]
+        ];
     .util.setMaintainCompression[handle;data;compSet];
     .log.info"sort of ",string[column]," in ",string[handleToTable]," took:",string .z.p-st;
     }
 
 .util.setMaintainCompression:{[fh;data;compSet]
-    /if compSet provided then just write data and exit
+    //if compSet provided then just write data and exit
     if[3=count compSet;
-        fh:fh,compSet;
-        fh set data;
+        (fh,compSet) set data;
         :(::);
         ];
-    /get existing settings with protected eval incase new fh
-    cDict:.[!;(-21;fh);()];
-    /make defaults 0s
-    cDict:((1#`)!1#0),cDict;
-    fh:fh,cDict`logicalBlockSize`algorithm`zipLevel;
-    fh set data
+    //get existing settings with protected eval incase new fh
+    compSet:@[{-3#0 0 0i,value -21!x};fh;0 0 0i];
+    (fh,compSet) set data
     }
